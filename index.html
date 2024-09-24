@@ -13,29 +13,31 @@
 </head>
 <body>
 
-  <div class="max-w-screen-lg mx-auto px-4 py-10">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 justify-center items-center">
+  <div class="container mx-auto px-4 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 justify-center items-center">
       
       <!-- Canvas Section -->
-      <div class="mb-4 text-center">
-        <div id="canvas-frame" class="mx-auto">
-          <img id="image" src="./image.jpg" alt="Canvas Image" class="w-full">
+      <div class="mb-8 text-center">
+        <div id="canvas-frame" class="mx-auto shadow-lg">
+          <div class="canvas-shadow-frame mx-auto">
+            <img id="image" src="./image.jpg" alt="Framed Canvas Image" class="w-full h-full object-cover">
+          </div>
         </div>
       </div>
       
       <!-- Calculator Section -->
       <div class="flex flex-col justify-center items-center">
-        <div id="price-box" class="w-full">
-          <h2 class="mb-4 text-center text-2xl font-bold">Canvas Price Calculator</h2>
+        <div id="price-box" class="w-full p-8 bg-white rounded-lg shadow-lg">
+          <h2 class="mb-4 text-center text-3xl font-extrabold text-gray-800">Canvas Price Calculator</h2>
 
           <!-- Slider to adjust size -->
-          <label for="sizeSlider" class="block text-lg mb-2">Select Canvas Size (cm)</label>
-          <input id="sizeSlider" type="range" min="50" max="200" step="5" value="100" class="w-full mb-4">
+          <label for="sizeSlider" class="block text-lg font-semibold mb-2 text-gray-600">Select Canvas Size (cm)</label>
+          <input id="sizeSlider" type="range" min="50" max="200" step="5" value="100" class="w-full mb-4 range-slider">
 
           <!-- Display dimensions and price -->
           <div class="text-center mb-4">
-            <p class="text-xl">Selected Size: <span id="dimensions" class="price-value">100 cm</span></p>
-            <p class="text-xl">Price: $<span id="price" class="price-value">200</span></p>
+            <p class="text-2xl font-semibold text-gray-700">Selected Size: <span id="dimensions" class="price-value text-gray-900">100 cm</span></p>
+            <p class="text-2xl font-semibold text-gray-700">Price: $<span id="price" class="price-value text-green-600">200</span></p>
           </div>
         </div>
       </div>

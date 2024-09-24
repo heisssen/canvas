@@ -1,40 +1,58 @@
 /* Full Page Canvas Effect */
 body {
   height: 100vh;
-  background-color: #f4f4f9;
-  background-image: url('https://www.transparenttextures.com/patterns/concrete-wall.png'); /* Subtle wall texture */
+  background-color: #ececec;
+  background-image: url('https://www.transparenttextures.com/patterns/subtle-grunge.png'); /* Soft grunge wall texture */
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease-in-out;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Enhanced Canvas Frame Effect */
+/* Canvas Frame Styling */
 #canvas-frame {
-  background-color: white;
-  padding: 50px;
+  max-width: 800px;
+  padding: 0;
   border-radius: 20px;
-  border: 15px solid #e9ecef;  /* Thicker frame to mimic a real canvas */
-  box-shadow: 0 35px 75px rgba(0, 0, 0, 0.3); /* Deeper shadow for canvas effect */
+  overflow: hidden;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.3); /* Strong shadow to simulate depth */
   position: relative;
-  max-width: 600px;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: white;
 }
 
-/* Hover effect for canvas */
-#canvas-frame:hover {
-  transform: translateY(-5px); /* Adds a subtle hover animation */
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.35);
+/* Canvas Shadow Frame for Realistic Effect */
+.canvas-shadow-frame {
+  width: 100%;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border: 15px solid #ffffff;  /* White Frame */
+  border-radius: 15px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15); /* Inner shadow */
+  transform: translateY(-10px) rotateX(0deg) rotateY(0deg);
+  transition: transform 0.5s ease-in-out;
 }
 
-/* Canvas Image */
+/* Hover effect to add realism */
+.canvas-shadow-frame:hover {
+  transform: translateY(-15px) rotateX(2deg) rotateY(-1deg); /* Adds depth */
+}
+
+/* Image Styling */
 #image {
-  border-radius: 12px;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+  border-radius: 10px;
   width: 100%;
   height: auto;
   display: block;
+  object-fit: cover;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25); /* Shadow around the image */
+  transition: box-shadow 0.5s ease-in-out;
+}
+
+/* Hover effect for image shadow */
+#image:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35); /* Stronger shadow on hover */
 }
 
 /* Modern Slider Styling */
@@ -51,7 +69,7 @@ input[type=range] {
   width: 100%;
   -webkit-appearance: none;
   height: 14px;
-  background: linear-gradient(90deg, #e0e0e0, #a0aec0); /* Smoother gradient background */
+  background: linear-gradient(90deg, #cbd5e0, #a0aec0); /* Smoother gradient background */
   outline: none;
   border-radius: 7px;
   transition: background-color 0.2s ease-in-out;
@@ -68,17 +86,17 @@ input[type=range]:active::-webkit-slider-thumb {
 
 /* Price Box Styling */
 #price-box {
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: box-shadow 0.3s ease-in-out;
 }
 
 /* Hover effect for price box */
 #price-box:hover {
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .price-value {
