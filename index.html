@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Size Adjuster</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* 3D Canvas Effect */
+    #image {
+      border-radius: 10px;
+      box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+      transform: perspective(1000px) rotateY(-10deg);
+    }
+
+    /* Slider Styling */
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      background: #4A5568;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    input[type=range] {
+      width: 100%;
+      -webkit-appearance: none;
+      height: 10px;
+      background: #CBD5E0;
+      outline: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+  <div class="bg-white p-6 rounded-lg shadow-lg max-w-4xl mx-auto flex space-x-8">
+    
+    <!-- Canvas Image with 3D Effect -->
+    <div class="flex-shrink-0">
+      <div class="border-4 border-gray-300 p-4 bg-white rounded-lg">
+        <img id="image" src="image.jpg" alt="Canvas Image" class="w-64 h-auto">
+      </div>
+    </div>
+
+    <!-- Calculator -->
+    <div class="flex-grow">
+      <h2 class="text-2xl font-bold mb-4">Adjust Canvas Size</h2>
+      
+      <!-- Slider to adjust size -->
+      <div class="mb-6">
+        <label for="sizeSlider" class="block text-lg mb-2">Select Canvas Size (cm)</label>
+        <input id="sizeSlider" type="range" min="50" max="200" step="5" value="100" class="w-full">
+      </div>
+
+      <!-- Display dimensions and price -->
+      <div class="mb-4">
+        <p class="text-lg">Dimensions: <span id="dimensions">100 cm</span></p>
+        <p class="text-lg font-semibold">Price: $<span id="price">200</span></p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const image = document.getElementById('image');
+    const sizeSlider = document.getElementById('sizeSlider');
+    const dimensionsDisplay = document.getElementById('dimensions');
+    const priceDisplay = document.getElementById('price');
+
+    // Function to update size and price
+    function updateSizeAndPrice(newSize) {
+      const newPrice = (newSize - 50) * 2;  // Price calculation logic
+      const scaledWidth = newSize * 3;  // Scale the image width in pixels (3px per cm)
+      
+      // Update image size, dimensions text, and price
+      image.style.width = `${scaledWidth}px`;
+      image.style.height = 'auto';  // Maintain aspect ratio
+      
+      dimensionsDisplay.textContent = `${newSize} cm`;
+      priceDisplay.textContent = newPrice;
+    }
+
+    // Event listener for slider
+    sizeSlider.addEventListener('input', function() {
+      updateSizeAndPrice(sizeSlider.value);
+    });
+  </script>
+
+</body>
+</html>
