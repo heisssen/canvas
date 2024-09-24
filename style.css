@@ -1,0 +1,97 @@
+/* Full Page Canvas Effect */
+body {
+  height: 100vh;
+  background-color: #f4f4f9;
+  background-image: url('https://www.transparenttextures.com/patterns/concrete-wall.png'); /* Subtle wall texture */
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Enhanced Canvas Frame Effect */
+#canvas-frame {
+  background-color: white;
+  padding: 50px;
+  border-radius: 20px;
+  border: 15px solid #e9ecef;  /* Thicker frame to mimic a real canvas */
+  box-shadow: 0 35px 75px rgba(0, 0, 0, 0.3); /* Deeper shadow for canvas effect */
+  position: relative;
+  max-width: 600px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Hover effect for canvas */
+#canvas-frame:hover {
+  transform: translateY(-5px); /* Adds a subtle hover animation */
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.35);
+}
+
+/* Canvas Image */
+#image {
+  border-radius: 12px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Modern Slider Styling */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 25px;
+  height: 25px;
+  background: linear-gradient(135deg, #4A5568, #2D3748); /* Modern gradient */
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type=range] {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 14px;
+  background: linear-gradient(90deg, #e0e0e0, #a0aec0); /* Smoother gradient background */
+  outline: none;
+  border-radius: 7px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Hover and active state for slider */
+input[type=range]:hover::-webkit-slider-thumb {
+  background: linear-gradient(135deg, #3B4252, #2D3748);
+}
+
+input[type=range]:active::-webkit-slider-thumb {
+  background-color: #1a202c;
+}
+
+/* Price Box Styling */
+#price-box {
+  background-color: #f8f9fa;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Hover effect for price box */
+#price-box:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.price-value {
+  color: #198754;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+/* Subtle Text Transitions */
+.h5, .price-value {
+  transition: color 0.2s ease-in-out;
+}
+
+.h5:hover {
+  color: #343a40;
+}
