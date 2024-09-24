@@ -3,21 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canvas Size Adjuster</title>
+  <title>Canvas Price Calculator</title>
+
+  <!-- Tailwind and Bootstrap CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
-    /* 3D Canvas Effect */
+    /* Full Page Canvas Effect */
+    body {
+      height: 100vh;
+      background-color: #f8f9fa;
+      background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Light wall texture */
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Canvas Frame Effect */
+    #canvas-frame {
+      background-color: white;
+      padding: 20px;
+      border-radius: 15px;
+      border: 8px solid #e9ecef;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* Depth effect */
+      position: relative;
+      transform: perspective(800px) rotateX(2deg) rotateY(-2deg); /* Slight 3D tilt effect */
+    }
+
+    /* Canvas Image */
     #image {
-      border-radius: 10px;
-      box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
-      transform: perspective(1000px) rotateY(-10deg);
+      border-radius: 5px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4); /* Stronger shadow for canvas depth */
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     /* Slider Styling */
     input[type=range]::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 20px;
-      height: 20px;
+      width: 25px;
+      height: 25px;
       background: #4A5568;
       border-radius: 50%;
       cursor: pointer;
@@ -26,65 +54,88 @@
     input[type=range] {
       width: 100%;
       -webkit-appearance: none;
-      height: 10px;
-      background: #CBD5E0;
+      height: 12px;
+      background: #adb5bd;
       outline: none;
-      border-radius: 5px;
+      border-radius: 6px;
+    }
+
+    /* Hover and active state for slider */
+    input[type=range]:hover::-webkit-slider-thumb {
+      background-color: #495057;
+    }
+
+    input[type=range]:active::-webkit-slider-thumb {
+      background-color: #343a40;
+    }
+
+    /* Price Box Styling */
+    #price-box {
+      background-color: #f1f3f5;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .price-value {
+      color: #198754;
+      font-weight: bold;
+      font-size: 24px;
     }
   </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
+<body>
 
-  <div class="bg-white p-6 rounded-lg shadow-lg max-w-4xl mx-auto flex space-x-8">
-    
-    <!-- Canvas Image with 3D Effect -->
-    <div class="flex-shrink-0">
-      <div class="border-4 border-gray-300 p-4 bg-white rounded-lg">
-        <img id="image" src="image.jpg" alt="Canvas Image" class="w-64 h-auto">
-      </div>
-    </div>
-
-    <!-- Calculator -->
-    <div class="flex-grow">
-      <h2 class="text-2xl font-bold mb-4">Adjust Canvas Size</h2>
+  <div class="container-fluid">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
       
-      <!-- Slider to adjust size -->
-      <div class="mb-6">
-        <label for="sizeSlider" class="block text-lg mb-2">Select Canvas Size (cm)</label>
-        <input id="sizeSlider" type="range" min="50" max="200" step="5" value="100" class="w-full">
+      <!-- Canvas Section -->
+      <div class="col-lg-6 col-md-12 mb-4 text-center">
+        <div id="canvas-frame" class="mx-auto">
+          <img id="image" src="./image.jpg" alt="Canvas Image" class="img-fluid">
+        </div>
+      </div>
+      
+      <!-- Calculator Section -->
+      <div class="col-lg-4 col-md-12 d-flex flex-column justify-content-center">
+        <div id="price-box">
+          <h2 class="mb-4 text-center">Canvas Price Calculator</h2>
+
+          <!-- Slider to adjust size -->
+          <label for="sizeSlider" class="form-label">Select Canvas Size (cm)</label>
+          <input id="sizeSlider" type="range" min="50" max="200" step="5" value="100" class="w-full mb-4">
+
+          <!-- Display dimensions and price -->
+          <div class="text-center mb-4">
+            <p class="h5">Selected Size: <span id="dimensions" class="price-value">100 cm</span></p>
+            <p class="h5">Price: $<span id="price" class="price-value">200</span></p>
+          </div>
+        </div>
       </div>
 
-      <!-- Display dimensions and price -->
-      <div class="mb-4">
-        <p class="text-lg">Dimensions: <span id="dimensions">100 cm</span></p>
-        <p class="text-lg font-semibold">Price: $<span id="price">200</span></p>
-      </div>
     </div>
-
   </div>
 
   <script>
-    const image = document.getElementById('image');
     const sizeSlider = document.getElementById('sizeSlider');
     const dimensionsDisplay = document.getElementById('dimensions');
     const priceDisplay = document.getElementById('price');
 
     // Function to update size and price
-    function updateSizeAndPrice(newSize) {
-      const newPrice = (newSize - 50) * 2;  // Price calculation logic
-      const scaledWidth = newSize * 3;  // Scale the image width in pixels (3px per cm)
+    function updatePrice(newSize) {
+      const basePrice = 100;  // Let's assume 50cm starts at $100
+      const pricePer5cm = 10; // Every 5 cm adds $10 to the price
+
+      const newPrice = basePrice + ((newSize - 50) / 5) * pricePer5cm; // Calculate based on size
       
-      // Update image size, dimensions text, and price
-      image.style.width = `${scaledWidth}px`;
-      image.style.height = 'auto';  // Maintain aspect ratio
-      
+      // Update dimensions and price display
       dimensionsDisplay.textContent = `${newSize} cm`;
-      priceDisplay.textContent = newPrice;
+      priceDisplay.textContent = newPrice.toFixed(2);
     }
 
-    // Event listener for slider
+    // Smooth slider interaction
     sizeSlider.addEventListener('input', function() {
-      updateSizeAndPrice(sizeSlider.value);
+      updatePrice(sizeSlider.value);
     });
   </script>
 
