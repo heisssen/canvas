@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Внутрішня помилка сервера | ArtCanvas</title>
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #e67e22;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --muted: #6c757d;
+            --white: #ffffff;
+            --offwhite: #f5f5f5;
+            --red: #e74c3c;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--offwhite);
+            color: var(--dark);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .error-container {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--red);
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+            position: relative;
+            text-shadow: 3px 3px 0 var(--primary);
+        }
+
+        .error-title {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .error-message {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--muted);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            background-color: var(--accent);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background-color: #d35400;
+            box-shadow: 0 8px 20px rgba(230, 126, 34, 0.5);
+        }
+
+        /* Art Studio Illustration */
+        .error-illustration {
+            position: relative;
+            height: 280px;
+            width: 350px;
+            margin: 0 auto 2.5rem;
+        }
+
+        /* Art Studio Desk */
+        .desk {
+            position: absolute;
+            bottom: 0;
+            width: 320px;
+            height: 30px;
+            background-color: #8B4513;
+            border-radius: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .desk::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background-color: #a0522d;
+            border-radius: 5px 5px 0 0;
+        }
+
+        /* Desk Legs */
+        .desk-leg-left, .desk-leg-right {
+            position: absolute;
+            bottom: -50px;
+            width: 20px;
+            height: 50px;
+            background-color: #8B4513;
+        }
+
+        .desk-leg-left {
+            left: 30px;
+        }
+
+        .desk-leg-right {
+            right: 30px;
+        }
+
+        /* Broken Computer */
+        .computer {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 90px;
+            perspective: 500px;
+        }
+
+        .monitor {
+            position: absolute;
+            width: 120px;
+            height: 90px;
+            background-color: #333;
+            border-radius: 5px;
+            top: 0;
+            overflow: hidden;
+            transform: rotateX(5deg);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            animation: glitchShake 2s infinite;
+        }
+
+        .screen {
+            position: absolute;
+            width: 110px;
+            height: 80px;
+            background: linear-gradient(45deg, #2980b9, #3498db);
+            top: 5px;
+            left: 5px;
+            overflow: hidden;
+        }
+
+        .error-text {
+            position: absolute;
+            color: white;
+            font-family: monospace;
+            font-size: 10px;
+            white-space: pre-wrap;
+            line-height: 1.2;
+            top: 10px;
+            left: 10px;
+            animation: textGlitch 3s infinite;
+        }
+
+        .glitch-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            mix-blend-mode: overlay;
+            animation: glitch 5s infinite;
+        }
+
+        .horizontal-line {
+            position: absolute;
+            width: 120%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.5);
+            left: -10%;
+            animation: horizontalGlitch 3s infinite;
+        }
+
+        /* Spilled Paint Containers */
+        .paint-container {
+            position: absolute;
+            width: 30px;
+            height: 40px;
+            background: linear-gradient(to bottom, #aaa, #888);
+            border-radius: 5px;
+            transform-origin: bottom center;
+        }
+
+        .paint-lid {
+            position: absolute;
+            width: 34px;
+            height: 6px;
+            background: #555;
+            top: -6px;
+            left: -2px;
+            border-radius: 2px;
+        }
+
+        .paint-spill {
+            position: absolute;
+            border-radius: 50%;
+            transform-origin: center;
+            z-index: -1;
+        }
+
+        /* Paint Container 1 - Red */
+        .container-1 {
+            bottom: 30px;
+            left: 40px;
+            transform: rotate(60deg);
+        }
+
+        .spill-1 {
+            width: 80px;
+            height: 60px;
+            background-color: rgba(231, 76, 60, 0.8);
+            bottom: 25px;
+            left: 45px;
+            border-radius: 50% 70% 60% 40%;
+            animation: spillGrow 1s forwards;
+        }
+
+        /* Paint Container 2 - Blue */
+        .container-2 {
+            bottom: 30px;
+            right: 70px;
+            transform: rotate(-45deg);
+        }
+
+        .spill-2 {
+            width: 95px;
+            height: 70px;
+            background-color: rgba(52, 152, 219, 0.8);
+            bottom: 25px;
+            right: 60px;
+            border-radius: 60% 40% 70% 30%;
+            animation: spillGrow 1s 0.3s forwards;
+        }
+
+        /* Paint Drips */
+        .drip {
+            position: absolute;
+            background-color: inherit;
+            border-radius: 0 0 10px 10px;
+            animation: drip 3s infinite;
+        }
+
+        .drip-1, .drip-2, .drip-3 {
+            width: 10px;
+            height: 0;
+            background-color: rgba(231, 76, 60, 0.8);
+            top: 100%;
+        }
+
+        .drip-1 {
+            left: 25%;
+            animation-delay: 0.5s;
+        }
+
+        .drip-2 {
+            left: 50%;
+            animation-delay: 1.2s;
+        }
+
+        .drip-3 {
+            left: 75%;
+            animation-delay: 0.8s;
+        }
+
+        .drip-4, .drip-5, .drip-6 {
+            width: 10px;
+            height: 0;
+            background-color: rgba(52, 152, 219, 0.8);
+            top: 100%;
+        }
+
+        .drip-4 {
+            left: 20%;
+            animation-delay: 0.3s;
+        }
+
+        .drip-5 {
+            left: 60%;
+            animation-delay: 1.5s;
+        }
+
+        .drip-6 {
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        /* Broken Art Frame */
+        .art-frame {
+            position: absolute;
+            width: 80px;
+            height: 100px;
+            background-color: #A0522D;
+            border: 8px solid #8B4513;
+            bottom: 40px;
+            right: 30px;
+            transform: rotate(15deg);
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .broken-glass {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .glass-crack {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.5);
+            transform-origin: center;
+        }
+
+        .crack-1 {
+            width: 2px;
+            height: 45px;
+            top: 10px;
+            left: 30px;
+            transform: rotate(30deg);
+        }
+
+        .crack-2 {
+            width: 2px;
+            height: 30px;
+            top: 20px;
+            left: 30px;
+            transform: rotate(-40deg);
+        }
+
+        .crack-3 {
+            width: 2px;
+            height: 35px;
+            top: 50px;
+            left: 20px;
+            transform: rotate(60deg);
+        }
+
+        /* Animations */
+        @keyframes glitchShake {
+            0% { transform: rotateX(5deg) translateX(0); }
+            20% { transform: rotateX(3deg) translateX(-2px); }
+            40% { transform: rotateX(7deg) translateX(2px); }
+            60% { transform: rotateX(4deg) translateX(-1px); }
+            80% { transform: rotateX(6deg) translateX(1px); }
+            100% { transform: rotateX(5deg) translateX(0); }
+        }
+
+        @keyframes textGlitch {
+            0% { opacity: 1; }
+            3% { opacity: 0.8; }
+            6% { opacity: 1; }
+            7% { opacity: 0.2; }
+            8% { opacity: 1; }
+            9% { opacity: 0.9; }
+            10% { opacity: 1; }
+            50% { opacity: 1; }
+            52% { opacity: 0.5; }
+            54% { opacity: 1; }
+            56% { opacity: 0.7; }
+            58% { opacity: 1; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes horizontalGlitch {
+            0% { top: -10%; opacity: 0; }
+            10% { top: 10%; opacity: 0.5; }
+            10.5% { opacity: 0; }
+            11% { top: 30%; opacity: 0.3; }
+            11.5% { opacity: 0; }
+            80% { top: 100%; opacity: 0; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        @keyframes glitch {
+            0% { opacity: 0; }
+            10% { opacity: 0.1; }
+            10.5% { opacity: 0; }
+            11% { opacity: 0.3; top: 20%; height: 5%; }
+            11.5% { opacity: 0; }
+            12% { opacity: 0.2; top: 70%; }
+            12.5% { opacity: 0; }
+            30% { opacity: 0; }
+            31% { opacity: 0.4; height: 10%; top: 30%; }
+            31.5% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes spillGrow {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes drip {
+            0% { height: 0; opacity: 1; }
+            50% { height: 60px; opacity: 1; }
+            100% { height: 60px; opacity: 0; top: calc(100% + 60px); }
+        }
+
+        /* Background art elements */
+        .bg-element {
+            position: fixed;
+            opacity: 0.07;
+            z-index: -1;
+        }
+
+        .bg-circle {
+            border-radius: 50%;
+        }
+
+        .bg-1 {
+            width: 300px;
+            height: 300px;
+            background-color: var(--red);
+            top: -100px;
+            left: -100px;
+        }
+
+        .bg-2 {
+            width: 200px;
+            height: 200px;
+            background-color: var(--primary);
+            bottom: -50px;
+            right: -50px;
+        }
+
+        .bg-3 {
+            width: 150px;
+            height: 150px;
+            background-color: var(--secondary);
+            bottom: 150px;
+            left: -30px;
+        }
+
+        .bg-4 {
+            width: 120px;
+            height: 120px;
+            background-color: #3498db;
+            top: 100px;
+            right: 50px;
+        }
+
+        .gear {
+            position: fixed;
+            border-radius: 50%;
+            border: 10px dashed rgba(44, 62, 80, 0.1);
+            z-index: -1;
+        }
+
+        .gear-1 {
+            width: 140px;
+            height: 140px;
+            top: 10%;
+            left: 10%;
+            animation: rotate 60s linear infinite;
+        }
+
+        .gear-2 {
+            width: 100px;
+            height: 100px;
+            bottom: 15%;
+            right: 15%;
+            animation: rotate 40s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 767px) {
+            .error-code {
+                font-size: 5rem;
+            }
+
+            .error-title {
+                font-size: 1.7rem;
+            }
+
+            .error-illustration {
+                transform: scale(0.8);
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-element bg-circle bg-1"></div>
+    <div class="bg-element bg-circle bg-2"></div>
+    <div class="bg-element bg-circle bg-3"></div>
+    <div class="bg-element bg-circle bg-4"></div>
+    <div class="gear gear-1"></div>
+    <div class="gear gear-2"></div>
+
+    <div class="error-container">
+        <div class="error-illustration">
+            <!-- Desk -->
+            <div class="desk"></div>
+            <div class="desk-leg-left"></div>
+            <div class="desk-leg-right"></div>
+
+            <!-- Broken Computer -->
+            <div class="computer">
+                <div class="monitor">
+                    <div class="screen">
+                        <div class="error-text">
+Error: 500
+Internal Server Error
+
+> stack_trace:
+  at: render_artwork
+  at: load_collection
+  at: process_request
+  at: server.main()
+                        </div>
+                        <div class="glitch-effect"></div>
+                        <div class="horizontal-line" style="top: 20%"></div>
+                        <div class="horizontal-line" style="top: 50%"></div>
+                        <div class="horizontal-line" style="top: 70%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spilled Paint Container - Red -->
+            <div class="paint-container container-1">
+                <div class="paint-lid"></div>
+            </div>
+            <div class="paint-spill spill-1">
+                <div class="drip drip-1"></div>
+                <div class="drip drip-2"></div>
+                <div class="drip drip-3"></div>
+            </div>
+
+            <!-- Spilled Paint Container - Blue -->
+            <div class="paint-container container-2">
+                <div class="paint-lid"></div>
+            </div>
+            <div class="paint-spill spill-2">
+                <div class="drip drip-4"></div>
+                <div class="drip drip-5"></div>
+                <div class="drip drip-6"></div>
+            </div>
+
+            <!-- Broken Art Frame -->
+            <div class="art-frame">
+                <div class="broken-glass">
+                    <div class="glass-crack crack-1"></div>
+                    <div class="glass-crack crack-2"></div>
+                    <div class="glass-crack crack-3"></div>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="error-code">500</h1>
+        <h2 class="error-title">Ой! У нас виникла внутрішня помилка.</h2>
+        <p class="error-message">Наші майстри-художники вже працюють над відновленням. Спробуйте оновити сторінку через кілька хвилин або поверніться на головну сторінку.</p>
+
+        <a href="index.html" class="btn">
+            <i class="fas fa-home me-2"></i>
+            Повернутися на головну
+        </a>
+    </div>
+
+    <script>
+        // Create additional horizontal lines at random intervals for screen glitch effect
+        function createGlitchLines() {
+            setInterval(() => {
+                const screen = document.querySelector('.screen');
+                const line = document.createElement('div');
+                line.className = 'horizontal-line';
+
+                // Random position
+                const topPos = Math.random() * 100;
+                line.style.top = topPos + '%';
+
+                screen.appendChild(line);
+
+                // Remove line element after animation completes
+                setTimeout(() => {
+                    if (line.parentNode) {
+                        line.parentNode.removeChild(line);
+                    }
+                }, 3000);
+            }, 1000);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            createGlitchLines();
+
+            // Display current user and date in console
+            const currentUser = 'heisssen';
+            const currentDate = new Date('2025-03-05T10:54:21Z');
+            console.log(`Logged in as: ${currentUser}`);
+            console.log(`Current date: ${currentDate.toISOString()}`);
+            console.log(`Error reported at: ${currentDate.toLocaleString()}`);
+            console.log(`Error ID: SERVER_FAULT_${Math.floor(Math.random() * 100000)}`);
+        });
+    </script>
+</body>
+</html>
