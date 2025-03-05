@@ -1,52 +1,1113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canvas Price Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Shop - Магазин картин на холсті</title>
 
-  <!-- Link to Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Link to External CSS -->
-  <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/logo.svg" alt="Canvas Shop Logo" height="40">
+                    <span class="ms-2">Canvas Shop</span>
+                </a>
 
-  <div class="container mx-auto px-4 py-16">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 justify-center items-center">
-      
-      <!-- Canvas Section -->
-      <div class="mb-8 text-center">
-        <div id="canvas-frame" class="mx-auto shadow-lg">
-          <div class="canvas-shadow-frame mx-auto">
-            <img id="image" src="./image.jpg" alt="Framed Canvas Image" class="w-full h-full object-cover">
+                <!-- Mobile Toggle Button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                    aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navigation Links -->
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Головна</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="catalog.html">Каталог</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="custom-design.html">Власний дизайн</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">Про нас</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Контакти</a>
+                        </li>
+                    </ul>
+
+                    <!-- Right Icons -->
+                    <div class="navbar-nav nav-icons">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#searchModal">
+                            <i class="fas fa-search"></i>
+                        </a>
+                        <a class="nav-link" href="account.html">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <a class="nav-link position-relative" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-counter">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Placeholder -->
+    <main>
+
+
+      <!-- Hero Section -->
+      <section class="hero-section">
+          <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
+
+              <div class="carousel-inner">
+                  <!-- Slide 1 -->
+                  <div class="carousel-item active" data-parallax="scroll">
+                      <img src="https://placehold.co/1920x800/2A3D45/FFFFFF?text=Canvas+Art+Collection" class="d-block w-100" alt="Canvas Art Collection">
+                      <div class="carousel-caption">
+                          <div class="container">
+                              <div class="hero-content">
+                                  <h1 class="hero-title">Мистецтво на вашій стіні</h1>
+                                  <p class="hero-description">Унікальні картини на холсті високої якості для вашого інтер'єру</p>
+                                  <a href="catalog.html" class="btn btn-primary btn-lg hero-btn">Переглянути колекцію</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Slide 2 -->
+                  <div class="carousel-item" data-parallax="scroll">
+                      <img src="https://placehold.co/1920x800/E76F51/FFFFFF?text=Custom+Design" class="d-block w-100" alt="Custom Design Canvas">
+                      <div class="carousel-caption">
+                          <div class="container">
+                              <div class="hero-content">
+                                  <h1 class="hero-title">Створіть свій дизайн</h1>
+                                  <p class="hero-description">Завантажте власне зображення та отримайте унікальний холст</p>
+                                  <a href="custom-design.html" class="btn btn-primary btn-lg hero-btn">Створити дизайн</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Slide 3 -->
+                  <div class="carousel-item" data-parallax="scroll">
+                      <img src="https://placehold.co/1920x800/343A40/FFFFFF?text=Premium+Quality" class="d-block w-100" alt="Premium Canvas Quality">
+                      <div class="carousel-caption">
+                          <div class="container">
+                              <div class="hero-content">
+                                  <h1 class="hero-title">Преміум якість</h1>
+                                  <p class="hero-description">Надійні матеріали та сучасні технології друку для довговічності</p>
+                                  <a href="about.html" class="btn btn-primary btn-lg hero-btn">Дізнатися більше</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Carousel Controls -->
+              <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Попередній</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Наступний</span>
+              </button>
           </div>
+      </section>
+
+      <!-- Benefits/Advantages Section -->
+<section class="features-section py-5">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2>Наші переваги</h2>
+            <p class="section-subheading">Чому обирають саме нас</p>
         </div>
-      </div>
-      
-      <!-- Calculator Section -->
-      <div class="flex flex-col justify-center items-center">
-        <div id="price-box" class="w-full p-8 bg-white rounded-lg shadow-lg">
-          <h2 class="mb-4 text-center text-3xl font-extrabold text-gray-800">Canvas Price Calculator</h2>
 
-          <!-- Slider to adjust size -->
-          <label for="sizeSlider" class="block text-lg font-semibold mb-2 text-gray-600">Select Canvas Size (cm)</label>
-          <input id="sizeSlider" type="range" min="50" max="200" step="5" value="100" class="w-full mb-4 range-slider">
+        <div class="row features-container">
+            <!-- Feature 1: Quality Materials -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="feature-title">Високоякісні матеріали</h3>
+                    <p class="feature-description">
+                        Використовуємо лише якісні холсти та екологічно чисті фарби для довговічності ваших зображень.
+                    </p>
+                </div>
+            </div>
 
-          <!-- Display dimensions and price -->
-          <div class="text-center mb-4">
-            <p class="text-2xl font-semibold text-gray-700">Selected Size: <span id="dimensions" class="price-value text-gray-900">100 cm</span></p>
-            <p class="text-2xl font-semibold text-gray-700">Price: $<span id="price" class="price-value text-green-600">200</span></p>
-          </div>
+            <!-- Feature 2: Fast Delivery -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <h3 class="feature-title">Швидка доставка</h3>
+                    <p class="feature-description">
+                        Гарантуємо виготовлення та доставку вашого замовлення у найкоротші терміни по всій Україні.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Feature 3: Custom Designs -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="feature-title">Власний дизайн</h3>
+                    <p class="feature-description">
+                        Створюйте унікальні шедеври, завантаживши власні фотографії або зображення для друку на холсті.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Feature 4: Satisfaction Guarantee -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="feature-title">Гарантія задоволення</h3>
+                    <p class="feature-description">
+                        Не задоволені результатом? Ми повернемо ваші кошти або виготовимо нове замовлення безкоштовно.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-
     </div>
-  </div>
+</section>
 
-  <!-- Link to External JavaScript -->
-  <script src="main.js"></script>
 
+<!-- Featured Products Section -->
+<section class="products-section py-5">
+    <div class="container">
+        <div class="section-header text-center mb-4">
+            <h2>Популярні товари</h2>
+            <p class="section-subheading">Найкращі картини на холсті для вашого інтер'єру</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <ul class="nav nav-tabs product-filter mb-4 justify-content-center" id="productTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="bestsellers-tab" data-bs-toggle="tab" data-bs-target="#bestsellers" type="button" role="tab" aria-controls="bestsellers" aria-selected="true">Бестселери</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="new-arrivals-tab" data-bs-toggle="tab" data-bs-target="#new-arrivals" type="button" role="tab" aria-controls="new-arrivals" aria-selected="false">Новинки</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="sale-tab" data-bs-toggle="tab" data-bs-target="#sale" type="button" role="tab" aria-controls="sale" aria-selected="false">Знижки</button>
+            </li>
+        </ul>
+
+        <!-- Product Grid -->
+        <div class="tab-content" id="productTabContent">
+            <!-- Bestsellers Tab -->
+            <div class="tab-pane fade show active" id="bestsellers" role="tabpanel" aria-labelledby="bestsellers-tab">
+                <div class="row product-grid">
+                    <!-- Product 1 -->
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://placehold.co/600x600/E76F51/FFFFFF?text=Canvas+1" class="img-fluid" alt="Міський пейзаж">
+                                <div class="product-overlay">
+                                    <a href="#" class="quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal1">
+                                        <i class="fas fa-eye"></i> Швидкий перегляд
+                                    </a>
+                                </div>
+                                <span class="product-badge bestseller">Бестселер</span>
+                            </div>
+                            <div class="product-details">
+                                <h3 class="product-title">Міський пейзаж</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(42)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">1,250 грн</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart-btn">
+                                    <i class="fas fa-shopping-cart"></i> Додати в кошик
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://placehold.co/600x600/2A3D45/FFFFFF?text=Canvas+2" class="img-fluid" alt="Абстрактне мистецтво">
+                                <div class="product-overlay">
+                                    <a href="#" class="quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal2">
+                                        <i class="fas fa-eye"></i> Швидкий перегляд
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-details">
+                                <h3 class="product-title">Абстрактне мистецтво</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>(37)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">980 грн</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart-btn">
+                                    <i class="fas fa-shopping-cart"></i> Додати в кошик
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://placehold.co/600x600/343A40/FFFFFF?text=Canvas+3" class="img-fluid" alt="Природний пейзаж">
+                                <div class="product-overlay">
+                                    <a href="#" class="quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal3">
+                                        <i class="fas fa-eye"></i> Швидкий перегляд
+                                    </a>
+                                </div>
+                                <span class="product-badge bestseller">Бестселер</span>
+                            </div>
+                            <div class="product-details">
+                                <h3 class="product-title">Природний пейзаж</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span>(28)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">1,450 грн</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart-btn">
+                                    <i class="fas fa-shopping-cart"></i> Додати в кошик
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://placehold.co/600x600/F8F9FA/2A3D45?text=Canvas+4" class="img-fluid" alt="Мінімалістичний дизайн">
+                                <div class="product-overlay">
+                                    <a href="#" class="quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal4">
+                                        <i class="fas fa-eye"></i> Швидкий перегляд
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-details">
+                                <h3 class="product-title">Мінімалістичний дизайн</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="far fa-star"></i>
+                                    <span>(19)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">890 грн</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart-btn">
+                                    <i class="fas fa-shopping-cart"></i> Додати в кошик
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://placehold.co/600x600/EFEFEF/2A3D45?text=Canvas+5" class="img-fluid" alt="Квіткова композиція">
+                                <div class="product-overlay">
+                                    <a href="#" class="quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal5">
+                                        <i class="fas fa-eye"></i> Швидкий перегляд
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-details">
+                                <h3 class="product-title">Квіткова композиція</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>(51)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">1,150 грн</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart-btn">
+                                    <i class="fas fa-shopping-cart"></i> Додати в кошик
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://placehold.co/600x600/E76F51/FFFFFF?text=Canvas+6" class="img-fluid" alt="Морський пейзаж">
+                                <div class="product-overlay">
+                                    <a href="#" class="quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal6">
+                                        <i class="fas fa-eye"></i> Швидкий перегляд
+                                    </a>
+                                </div>
+                                <span class="product-badge bestseller">Бестселер</span>
+                            </div>
+                            <div class="product-details">
+                                <h3 class="product-title">Морський пейзаж</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(33)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">1,350 грн</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart-btn">
+                                    <i class="fas fa-shopping-cart"></i> Додати в кошик
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 7 -->
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://placehold.co/600x600/2A3D45/FFFFFF?text=Canvas+7" class="img-fluid" alt="Геометричні форми">
+                                <div class="product-overlay">
+                                    <a href="#" class="quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal7">
+                                        <i class="fas fa-eye"></i> Швидкий перегляд
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-details">
+                                <h3 class="product-title">Геометричні форми</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span>(15)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">780 грн</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart-btn">
+                                    <i class="fas fa-shopping-cart"></i> Додати в кошик
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 8 -->
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://placehold.co/600x600/343A40/FFFFFF?text=Canvas+8" class="img-fluid" alt="Нічне місто">
+                                <div class="product-overlay">
+                                    <a href="#" class="quick-view-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal8">
+                                        <i class="fas fa-eye"></i> Швидкий перегляд
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-details">
+                                <h3 class="product-title">Нічне місто</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span>(24)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">1,290 грн</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart-btn">
+                                    <i class="fas fa-shopping-cart"></i> Додати в кошик
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Arrivals Tab -->
+            <div class="tab-pane fade" id="new-arrivals" role="tabpanel" aria-labelledby="new-arrivals-tab">
+                <div class="row product-grid">
+                    <!-- Add similar products for New Arrivals here -->
+                    <!-- For brevity, I'll include a placeholder message -->
+                    <div class="col-12 text-center py-5">
+                        <p>Завантаження нових товарів...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sale Tab -->
+            <div class="tab-pane fade" id="sale" role="tabpanel" aria-labelledby="sale-tab">
+                <div class="row product-grid">
+                    <!-- Add similar products for Sale here -->
+                    <!-- For brevity, I'll include a placeholder message -->
+                    <div class="col-12 text-center py-5">
+                        <p>Завантаження товарів зі знижками...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="catalog.html" class="btn btn-outline-primary btn-view-all">Переглянути весь каталог</a>
+        </div>
+    </div>
+</section>
+
+<!-- Improved Quick View Modal -->
+<div class="modal fade" id="quickViewModal1" tabindex="-1" aria-labelledby="quickViewModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="quickViewModalLabel1">Швидкий перегляд</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="row g-0">
+                    <!-- Product Image -->
+                    <div class="col-md-6">
+                        <div class="quick-view-image">
+                            <img src="https://placehold.co/600x600/E76F51/FFFFFF?text=Canvas+1" class="img-fluid rounded-start" alt="Міський пейзаж">
+                            <span class="product-badge bestseller">Бестселер</span>
+                        </div>
+                    </div>
+                    <!-- Product Details -->
+                    <div class="col-md-6">
+                        <div class="quick-view-details p-4">
+                            <h3 class="product-title mb-2">Міський пейзаж</h3>
+                            <div class="product-rating mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="rating-count">(42 відгуки)</span>
+                            </div>
+                            <div class="product-price mb-3">
+                                <span class="price">1,250 грн</span>
+                            </div>
+                            <div class="product-description mb-4">
+                                <p>Стильний міський пейзаж, виконаний на високоякісному холсті. Ідеально підходить для сучасних інтер'єрів, офісів та вітальних кімнат.</p>
+                            </div>
+
+                            <div class="product-options mb-4">
+                                <div class="row g-3">
+                                    <div class="col-12 col-sm-6">
+                                        <label for="sizeSelect" class="form-label">Розмір</label>
+                                        <select class="form-select" id="sizeSelect">
+                                            <option value="40x60">40×60 см</option>
+                                            <option value="60x80" selected>60×80 см</option>
+                                            <option value="80x120">80×120 см</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <label for="frameSelect" class="form-label">Рама</label>
+                                        <select class="form-select" id="frameSelect">
+                                            <option value="none">Без рами</option>
+                                            <option value="black" selected>Чорна</option>
+                                            <option value="white">Біла</option>
+                                            <option value="wood">Дерев'яна</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="product-meta mb-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="meta-item"><i class="fas fa-palette me-2"></i><span>100% бавовна</span></div>
+                                        <div class="meta-item"><i class="fas fa-truck me-2"></i><span>Безкоштовна доставка</span></div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="meta-item"><i class="fas fa-check-circle me-2"></i><span>Наявність: В наявності</span></div>
+                                        <div class="meta-item"><i class="fas fa-undo me-2"></i><span>30 днів на повернення</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="product-actions">
+                                <div class="row align-items-center g-3">
+                                    <div class="col-12 col-sm-5">
+                                        <label for="quantity" class="form-label">Кількість</label>
+                                        <div class="input-group quantity-selector">
+                                            <button class="btn btn-outline-secondary" type="button" id="decreaseQuantity">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <input type="text" class="form-control text-center" value="1" id="quantity">
+                                            <button class="btn btn-outline-secondary" type="button" id="increaseQuantity">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-7">
+                                        <button class="btn btn-primary btn-lg w-100 mt-sm-4">
+                                            <i class="fas fa-shopping-cart me-2"></i> Додати в кошик
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Design Upload Section -->
+<section class="custom-design-section py-5">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <span class="section-badge">Індивідуальний дизайн</span>
+            <h2>Створіть власний шедевр</h2>
+            <p class="section-subheading">Завантажте своє зображення та перетворіть його на унікальний холст для вашого простору</p>
+        </div>
+
+        <div class="custom-design-container">
+            <div class="row g-0">
+                <!-- Left Side: Image Preview -->
+                <div class="col-lg-6">
+                    <div class="custom-design-preview">
+                        <div class="preview-room-container">
+                            <img src="https://placehold.co/1200x800/EFEFEF/2A3D45?text=Interior+Preview" alt="Room Preview" class="preview-room-image">
+
+                            <div class="canvas-preview-wrapper">
+                                <div class="preview-container" id="imagePreviewContainer">
+                                    <div class="preview-placeholder" id="previewPlaceholder">
+                                        <i class="fas fa-image"></i>
+                                        <p>Перегляд вашого зображення</p>
+                                    </div>
+                                    <div class="preview-image-container" id="previewImageContainer" style="display: none;">
+                                        <img src="" alt="Preview" id="previewImage" class="preview-image">
+                                    </div>
+                                    <div class="preview-frame"></div>
+                                </div>
+                                <div class="preview-shadow"></div>
+                            </div>
+
+                            <button class="btn btn-sm btn-danger preview-remove" id="removePreview" style="display: none;">
+                                <i class="fas fa-times"></i> Видалити зображення
+                            </button>
+                        </div>
+
+                        <div class="preview-info">
+                            <div class="preview-info-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Попередній перегляд в реальному інтер'єрі</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Upload Form -->
+                <div class="col-lg-6">
+                    <div class="custom-design-form">
+                        <h3>Завантажте ваше зображення</h3>
+                        <p class="upload-intro">Створіть особисту картину на холсті всього за три простих кроки:</p>
+
+                        <div class="upload-steps">
+                            <div class="upload-step">
+                                <div class="step-number">1</div>
+                                <div class="step-text">Завантажте зображення</div>
+                            </div>
+                            <div class="upload-step">
+                                <div class="step-number">2</div>
+                                <div class="step-text">Налаштуйте параметри</div>
+                            </div>
+                            <div class="upload-step">
+                                <div class="step-number">3</div>
+                                <div class="step-text">Замовте свій холст</div>
+                            </div>
+                        </div>
+
+                        <!-- Upload Area -->
+                        <div class="upload-area" id="uploadArea">
+                            <input type="file" id="fileUpload" class="file-input" accept="image/*">
+                            <div class="upload-content">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <h4>Перетягніть файл сюди</h4>
+                                <p>або</p>
+                                <button class="btn btn-outline-primary btn-upload" id="browseButton">Оберіть файл</button>
+                                <p class="upload-info">Максимальний розмір: 10MB. Підтримувані формати: JPG, PNG, WEBP</p>
+                            </div>
+                        </div>
+
+                        <!-- Options Form -->
+                        <form class="canvas-options mt-4">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="canvasSize" class="form-label">Розмір холсту</label>
+                                    <div class="select-wrapper">
+                                        <select class="form-select" id="canvasSize">
+                                            <option value="40x60">40×60 см - 850 грн</option>
+                                            <option value="60x80" selected>60×80 см - 1200 грн</option>
+                                            <option value="80x120">80×120 см - 1800 грн</option>
+                                            <option value="100x150">100×150 см - 2500 грн</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="frameType" class="form-label">Тип рами</label>
+                                    <div class="select-wrapper">
+                                        <select class="form-select" id="frameType">
+                                            <option value="none">Без рами</option>
+                                            <option value="black" selected>Чорна рама (+250 грн)</option>
+                                            <option value="white">Біла рама (+250 грн)</option>
+                                            <option value="wood">Дерев'яна рама (+350 грн)</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-3">
+                                <label for="canvasEffect" class="form-label">Ефект</label>
+                                <div class="select-wrapper">
+                                    <select class="form-select" id="canvasEffect">
+                                        <option value="none" selected>Без ефекту</option>
+                                        <option value="bw">Чорно-білий</option>
+                                        <option value="sepia">Сепія</option>
+                                        <option value="vintage">Вінтаж</option>
+                                        <option value="oil">Імітація олійного живопису</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+
+                            <div class="mt-3">
+                                <label for="quantity" class="form-label">Кількість</label>
+                                <div class="custom-quantity-selector">
+                                    <button type="button" class="quantity-btn minus" id="decreaseQuantity">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <input type="text" class="quantity-input" value="1" id="quantity" readonly>
+                                    <button type="button" class="quantity-btn plus" id="increaseQuantity">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="canvas-price-container mt-4">
+                                <div class="canvas-total-price">
+                                    <div class="price-details">
+                                        <span class="price-label">Загальна вартість:</span>
+                                        <span class="price-info">з урахуванням кількості, розміру та типу рами</span>
+                                    </div>
+                                    <span class="price-value">1,450 грн</span>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-primary btn-lg w-100 order-btn mt-3" id="addToCartBtn" disabled>
+                                <i class="fas fa-shopping-cart me-2"></i> Додати в кошик
+                            </button>
+
+                            <div class="form-additional-info mt-3">
+                                <div class="additional-info-item">
+                                    <i class="fas fa-truck"></i>
+                                    <span>Безкоштовна доставка при замовленні від 2000 грн</span>
+                                </div>
+                                <div class="additional-info-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>100% гарантія якості продукції</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Subscription Section -->
+<section class="newsletter-section py-5">
+    <div class="container">
+        <div class="newsletter-container">
+            <div class="newsletter-pattern"></div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="newsletter-content">
+                        <h2>Підпишіться на нашу розсилку</h2>
+                        <p class="newsletter-description">Отримуйте інформацію про нові колекції, спеціальні пропозиції та ексклюзивні знижки. Будьте першими, хто дізнається про наші новинки.</p>
+
+                        <form class="newsletter-form" id="newsletterForm">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Ваш e-mail" aria-label="Email address" required>
+                                <button class="btn btn-primary" type="submit">
+                                    <span class="btn-text">Підписатися</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                            <div class="newsletter-privacy">
+                                <i class="fas fa-lock"></i>
+                                <span>Ваші дані надійно захищені. Ми поважаємо вашу приватність і не передаємо інформацію третім особам.</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="newsletter-image">
+                        <img src="https://placehold.co/600x400/EFEFEF/2A3D45?text=Newsletter+Image" alt="Newsletter" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section py-5">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2>Часті питання</h2>
+            <p class="section-subheading">Відповіді на найпопулярніші запитання про наші продукти та послуги</p>
+        </div>
+
+        <div class="faq-container">
+            <div class="accordion" id="faqAccordion">
+                <!-- FAQ Item 1 -->
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Скільки часу займає виготовлення та доставка холсту?
+                        </button>
+                    </h3>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>Стандартний час виготовлення холсту складає 1-2 робочі дні. Після цього ваше замовлення відправляється службою доставки, яку ви обрали при оформленні замовлення. Загалом, від моменту замовлення до отримання проходить 3-7 днів, залежно від вашого місцезнаходження.</p>
+                            <p>Для термінових замовлень ми пропонуємо прискорену доставку за додаткову плату. У такому випадку ви отримаєте холст протягом 1-3 днів.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Які вимоги до зображень для друку на холсті?
+                        </button>
+                    </h3>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>Для найкращого результату друку ми рекомендуємо використовувати зображення високої якості з роздільною здатністю не менше 150 dpi. Оптимальна роздільна здатність - 300 dpi.</p>
+                            <p>Підтримувані формати файлів: JPEG, PNG, TIFF та PDF. Максимальний розмір файлу - 50 МБ.</p>
+                            <p>Якщо ви не впевнені в якості вашого зображення, наші дизайнери безкоштовно оцінять його придатність для друку та нададуть рекомендації щодо можливих розмірів холсту.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Які матеріали використовуються для виготовлення холстів?
+                        </button>
+                    </h3>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>Для наших холстів ми використовуємо високоякісний бавовняний матеріал щільністю 380 г/м², що забезпечує чудову передачу кольорів та довговічність зображення.</p>
+                            <p>Фарби, які ми використовуємо, є екологічно чистими та стійкими до вицвітання. Вони зберігають яскравість кольорів до 75 років при правильному догляді.</p>
+                            <p>Підрамники виготовляються з натурального соснового дерева, яке пройшло спеціальну обробку для запобігання деформації з часом.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Як доглядати за холстом?
+                        </button>
+                    </h3>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>Для тривалого збереження якості вашого холсту рекомендуємо дотримуватися таких правил:</p>
+                            <ul>
+                                <li>Уникайте розміщення холсту під прямими сонячними променями</li>
+                                <li>Не розташовуйте його у вологих приміщеннях</li>
+                                <li>Для очищення від пилу використовуйте лише суху м'яку тканину</li>
+                                <li>Не використовуйте хімічні засоби для чищення</li>
+                                <li>Температура в приміщенні має бути в межах 18-24°C</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Яка політика повернення товару?
+                        </button>
+                    </h3>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>Ми пропонуємо 30-денну гарантію повернення коштів, якщо ви не задоволені якістю нашої продукції. Однак, оскільки кожен холст виготовляється індивідуально, ми не можемо прийняти повернення, якщо:</p>
+                            <ul>
+                                <li>Ви неправильно вказали розміри або інші параметри</li>
+                                <li>Вам не сподобався дизайн, який ви самі завантажили</li>
+                                <li>Є механічні пошкодження, завдані після отримання замовлення</li>
+                            </ul>
+                            <p>У разі виробничого браку ми безкоштовно виготовимо новий холст або повернемо кошти на ваш вибір.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="faq.html" class="btn btn-outline-primary">Переглянути всі питання</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Company Info -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="footer-heading">Canvas Shop</h5>
+                    <p class="text-muted">Перетворіть ваші улюблені моменти на витвори мистецтва. Якісні холсти, швидка доставка та гарантія задоволення.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-sm-6 col-md-2 mb-4 mb-md-0">
+                    <h5 class="footer-heading">Швидкі посилання</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Головна</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="custom-design.html">Власний дизайн</a></li>
+                        <li><a href="about.html">Про нас</a></li>
+                        <li><a href="contact.html">Контакти</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="col-sm-6 col-md-3 mb-4 mb-md-0">
+                    <h5 class="footer-heading">Клієнтам</h5>
+                    <ul class="footer-links">
+                        <li><a href="faq.html">Часті питання</a></li>
+                        <li><a href="shipping.html">Доставка</a></li>
+                        <li><a href="returns.html">Повернення</a></li>
+                        <li><a href="privacy.html">Політика конфіденційності</a></li>
+                        <li><a href="terms.html">Умови використання</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-md-3">
+                    <h5 class="footer-heading">Контакти</h5>
+                    <address class="mb-0 text-muted">
+                        <p><i class="fas fa-map-marker-alt me-2"></i> вул. Мистецька, 42, Київ</p>
+                        <p><i class="fas fa-phone me-2"></i> +38 (044) 123-45-67</p>
+                        <p><i class="fas fa-envelope me-2"></i> info@canvasshop.ua</p>
+                    </address>
+                </div>
+            </div>
+
+            <!-- Payment Methods & Copyright -->
+            <hr class="mt-4 mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="mb-0 text-muted">&copy; 2025 Canvas Shop. Всі права захищено.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa payment-icon"></i>
+                        <i class="fab fa-cc-mastercard payment-icon"></i>
+                        <i class="fab fa-cc-apple-pay payment-icon"></i>
+                        <i class="fab fa-cc-paypal payment-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="searchModalLabel">Пошук</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Що ви шукаєте?">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="scripts.js">
+
+    // This script will be executed when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        const fileUpload = document.getElementById('fileUpload');
+        const browseButton = document.getElementById('browseButton');
+        const uploadArea = document.getElementById('uploadArea');
+        const previewImage = document.getElementById('previewImage');
+        const previewPlaceholder = document.getElementById('previewPlaceholder');
+        const previewImageContainer = document.getElementById('previewImageContainer');
+        const removePreviewBtn = document.getElementById('removePreview');
+        const addToCartBtn = document.getElementById('addToCartBtn');
+
+        // Click browse button triggers file input
+        browseButton.addEventListener('click', function() {
+            fileUpload.click();
+        });
+
+        // File input change handler
+        fileUpload.addEventListener('change', handleFileSelect);
+
+        // Remove preview button handler
+        removePreviewBtn.addEventListener('click', function() {
+            previewImageContainer.style.display = 'none';
+            previewPlaceholder.style.display = 'flex';
+            removePreviewBtn.style.display = 'none';
+            fileUpload.value = '';
+            addToCartBtn.disabled = true;
+        });
+
+        // Drag and drop handlers
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            uploadArea.classList.add('drag-over');
+        });
+
+        uploadArea.addEventListener('dragleave', function() {
+            uploadArea.classList.remove('drag-over');
+        });
+
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('drag-over');
+
+            if (e.dataTransfer.files.length) {
+                fileUpload.files = e.dataTransfer.files;
+                handleFileSelect(e);
+            }
+        });
+
+        // Quantity handlers
+        const decreaseBtn = document.getElementById('decreaseQuantity');
+        const increaseBtn = document.getElementById('increaseQuantity');
+        const quantityInput = document.getElementById('quantity');
+
+        decreaseBtn.addEventListener('click', function() {
+            const currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+
+        increaseBtn.addEventListener('click', function() {
+            const currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        });
+
+        // Handle file select/drop
+        function handleFileSelect(e) {
+            const file = fileUpload.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                previewImage.src = e.target.result;
+                previewPlaceholder.style.display = 'none';
+                previewImageContainer.style.display = 'block';
+                removePreviewBtn.style.display = 'block';
+                addToCartBtn.disabled = false;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+
+    </script>
 </body>
 </html>
